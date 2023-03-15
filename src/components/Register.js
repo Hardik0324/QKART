@@ -6,9 +6,11 @@ import React, { useState } from "react";
 import { config } from "../App";
 import Footer from "./Footer";
 import Header from "./Header";
+import { Link, useHistory } from "react-router-dom";
 import "./Register.css";
 
 const Register = () => {
+  const history = useHistory();
   const { enqueueSnackbar } = useSnackbar();
   const [formData, setFormData] = useState({
     username: "",
@@ -57,7 +59,9 @@ const Register = () => {
       console.log(data);
       // alert("success")
       enqueueSnackbar("Success - registering a new user",{variant: "success"})
+      history.push("/login", {from: "register"})
     } catch (error) {
+      setLoading(false);
       console.log(error.response.data.message)
       if(error.response.status === 400){
         enqueueSnackbar(error.response.data.message, {variant: "error"})
@@ -156,9 +160,9 @@ const Register = () => {
            </Button>}
           <p className="secondary-action">
             Already have an account?{" "}
-             <a className="link" href="#">
+             <Link className="link" to="/login">
               Login here
-             </a>
+             </Link>
           </p>
         </Stack>
       </Box>
