@@ -48,7 +48,7 @@ const Login = () => {
     try {
       if(validateInput(formData)){
         const config1 = { headers: { "Content-Type": "application/json" } };
-        console.log(formData)
+        // console.log(formData)
         setLoading(true);
         const data  = await axios.post(
           `${config.endpoint}/auth/login`,
@@ -137,7 +137,7 @@ const Login = () => {
       justifyContent="space-between"
       minHeight="100vh"
     >
-      <Header hasHiddenAuthButtons={true}/>
+      <Header hasHiddenAuthButtons/>
       <Box className="content">
         <Stack spacing={2} className="form">
         <h2 className="title">Login</h2>

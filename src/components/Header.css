@@ -29,8 +29,22 @@
     margin-right: 10px;
 }
 
+.search1{
+    display: block !important;
+    width: 40vw !important;
+}
+
 @media screen and (min-width: 768px) {
     .username-text {
         display: block;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .username-text {
+        display: block;
+    }
+    .search1{
+        display: none !important;
     }
 }
