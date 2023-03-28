@@ -24,13 +24,11 @@ import ProductCard from "./ProductCard";
  * @property {number} cost - The price to buy the product
  * @property {number} rating - The aggregate rating of the product (integer out of five)
  * @property {string} image - Contains URL for the product image
- * @property {string} _id - Unique ID for the product
+ * @property {string} productId - Unique ID for the product
  */
-
 
 const Products = () => {
 
-  // TODO: CRIO_TASK_MODULE_PRODUCTS - Fetch products data and store it
   /**
    * Make API call to get the products list and store it to display the products
    *
@@ -71,11 +69,15 @@ const Products = () => {
   const [arrprod, setArrprod] = useState([]) 
   const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState("");
+  const tok = localStorage.getItem("token");
 
   useEffect(()=>{
     performAPICall()
   },[])
 
+  useEffect(()=>{
+    fetchCart(tok)
+  },[])
 
   const performAPICall = async () => {
     try{
@@ -108,7 +110,6 @@ const Products = () => {
   //   setSearch(e.target.value);
   //   performSearch(search)
   // }
-
 
   const performSearch = async (txt) => {
     // console.log(text.target.value);
@@ -204,6 +205,8 @@ const Products = () => {
         placeholder="Search for items/categories"
         name="search"
       />
+      <div className="mainProd">
+      <div className="prdimg">
        <Grid container>
          <Grid item className="product-grid">
            <Box className="hero">
@@ -229,6 +232,11 @@ const Products = () => {
       ))
       }
       </Grid>
+      </div>
+      {
+        tok ? <div className="cart1"><Cart className="cartin"/></div> : <></>
+      }
+      </div>
       <Footer />
     </div>
   );
