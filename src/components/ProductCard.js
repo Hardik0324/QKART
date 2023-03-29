@@ -33,7 +33,7 @@ const ProductCard = ({ product, handleAddToCart }) => {
           <Rating name="size-medium" defaultValue={product.rating} readOnly/>
         </CardContent>
         <CardActions>
-          <Button className="addbut" variant="contained"><AddShoppingCartOutlined/> ADD TO CART</Button>
+          <Button className="addbut" variant="contained" onClick={handleAddToCart}><AddShoppingCartOutlined/> ADD TO CART</Button>
         </CardActions>
       </Card>
     </Grid>

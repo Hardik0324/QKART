@@ -46,7 +46,7 @@ const Register = () => {
   const register = async (formData) => {
     try {
       const config1 = { headers: { "Content-Type": "application/json" } };
-      console.log(formData)
+      // console.log(formData)
       setLoading(true);
       const data  = await axios.post(
         `${config.endpoint}/auth/register`,
@@ -56,13 +56,13 @@ const Register = () => {
         config1
       );
       setLoading(false)
-      console.log(data);
+      // console.log(data);
       // alert("success")
       enqueueSnackbar("Success - registering a new user",{variant: "success"})
       history.push("/login", {from: "register"})
     } catch (error) {
       setLoading(false);
-      console.log(error.response.data.message)
+      // console.log(error.response.data.message)
       if(error.response.status === 400){
         enqueueSnackbar(error.response.data.message, {variant: "error"})
       }

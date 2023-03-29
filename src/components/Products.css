@@ -83,6 +83,19 @@
   justify-content: center;
 }
 
+.mainProd{
+  display: flex;
+  flex-direction: column;
+}
+
+.cart1{
+  background-color: #E9F5E1;
+}
+
+.cartin{
+  padding: 2px;
+}
+
 @media screen and (min-width: 768px) {
   .hero {
     justify-content: flex-end;
@@ -99,5 +112,20 @@
   }
   .search-desktop {
     display: block !important;
+  }
+  .mainProd{
+    display: flex;
+    flex-direction: row;
+  }
+  /* .prdimg{
+    width: 75%;
+  } */
+  .cart1{
+    width: 100%;
+    background-color: #E9F5E1;
+  }
+  .cartin{
+    height: 50vh;
+    padding: 2px;
   }
 }

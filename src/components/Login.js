@@ -60,7 +60,7 @@ const Login = () => {
         setFormData({...formData, token:data.data.token})
         setBalance(data.data.balance)
         setLoading(false)
-        console.log(data);
+        // console.log(data);
         persistLogin(data.data.token, formData.username, data.data.balance);
         // alert("success")
         enqueueSnackbar("Logged in successfully",{variant: "success"})
