@@ -93,6 +93,8 @@ export const getTotalCartValue = (items = []) => {
  * @param {Function} handleDelete
  *    Handler function which reduces the quantity of a product in cart by 1
  * 
+ * @param {Boolean} isReadOnly
+ *    If product quantity on cart is to be displayed as read only without the + - options to change quantity
  * 
  */
 const ItemQuantity = ({
@@ -131,8 +133,18 @@ const ItemQuantity = ({
  * @param {Function} handleDelete
  *    Current quantity of product in cart
  * 
+ * @param {Boolean} isReadOnly
+ *    If product quantity on cart is to be displayed as read only without the + - options to change quantity
  * 
  */
+ const getTotalItems = (items)=>{
+  let sum = items.reduce((acc, ele)=>{
+    return acc+ele.qty;
+  }, 0);
+  return sum;
+}
+
+
 const Cart = ({
   products,
   items = [],
@@ -167,6 +179,7 @@ const Cart = ({
   // console.log(products)
   // console.log(items)
   // console.log(arri)
+  // console.log(isReadOnly)
 
   const gocart = ()=>{
     history.push("/checkout")
@@ -255,6 +268,129 @@ const Cart = ({
           </Button>
         </Box>}
       </Box>
+      {
+          isReadOnly?(
+            <Box className="cart">
+              {/* TODO: CRIO_TASK_MODULE_CART - Display view for each cart item with non-zero quantity */}
+              <Box
+                padding="1rem"
+                display="flex"
+                justifyContent="space-between"
+                alignItems="center"
+              >
+                <Box
+                  color="#3C3C3C"
+                  fontWeight="700"
+                  fontSize="1.5rem"
+                  alignSelf="center"
+               
+                >
+                  Order Total
+                </Box>
+              </Box>
+              <Box
+                px="1rem"
+                py="0.5rem"
+                display="flex"
+                justifyContent="space-between"
+                alignItems="center"
+              >
+                  <Box
+                    color="#3C3C3C"
+                    fontWeight="500"
+                    fontSize="1rem"
+                    alignSelf="center"
+                  >
+                    Products
+                  </Box>
+                  <Box
+                    color="#3C3C3C"
+                    fontWeight="500"s
+                    fontSize="1rem"
+                    alignSelf="center"
+                  >
+                    ${getTotalItems(arri)}
+                  </Box>
+              </Box>
+    
+              <Box
+                px="1rem"
+                py="0.5rem"
+                display="flex"
+                justifyContent="space-between"
+                alignItems="center"
+              >
+                  <Box
+                    color="#3C3C3C"
+                    fontWeight="500"
+                    fontSize="1rem"
+                    alignSelf="center"
+                  >
+                    Subtotal
+                  </Box>
+                  <Box
+                    color="#3C3C3C"
+                    fontWeight="500"s
+                    fontSize="1rem"
+                    alignSelf="center"
+                  >
+                    ${getTotalCartValue(arri)}
+                  </Box>
+              </Box>
+    
+              <Box
+                px="1rem"
+                py="0.5rem"
+                display="flex"
+                justifyContent="space-between"
+                alignItems="center"
+              >
+                  <Box
+                    color="#3C3C3C"
+                    fontWeight="500"
+                    fontSize="1rem"
+                    alignSelf="center"
+                  >
+                    Shipping Charges
+                  </Box>
+                  <Box
+                    color="#3C3C3C"
+                    fontWeight="500"s
+                    fontSize="1rem"
+                    alignSelf="center"
+                  >
+                    ${0}
+                  </Box>
+              </Box>
+    
+              <Box
+                padding="1rem"
+                display="flex"
+                justifyContent="space-between"
+                alignItems="center"
+              >
+                  <Box
+                    color="#3C3C3C"
+                    fontWeight="700"
+                    fontSize="1.2rem"
+                    alignSelf="center"
+                  >
+                   Total
+                  </Box>
+                  <Box
+                    color="#3C3C3C"
+                    fontWeight="700"s
+                    fontSize="1.2rem"
+                    alignSelf="center"
+                  >
+                     ${getTotalCartValue(arri)}
+                  </Box>
+              </Box>
+            </Box>
+          )         
+          :
+          null
+      }
     </>
   );
 };
