@@ -7,7 +7,7 @@ import Checkout from "./components/Checkout"
 import Thanks from "./components/Thanks"
 
 export const config = {
-  endpoint: `http://${ipConfig.workspaceIp}:8083/api/v1`,
+  endpoint: `https://qkart-frontend-hardik24.onrender.com/api/v1`,
 };
 
 function App() {
